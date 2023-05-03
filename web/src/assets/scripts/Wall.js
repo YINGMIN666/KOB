@@ -22,3 +22,9 @@ export class Wall extends AcGameObject {
     ctx.fillRect(this.c * L, this.r * L, L, L);
   }
 }
+
+
+
+
+
+
