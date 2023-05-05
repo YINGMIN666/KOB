@@ -1,5 +1,5 @@
 <template>
-  <ContentField>
+  <ContentField v-if="!$store.state.user.pulling_info">
     <div class="row justify-content-md-center">
       <div class="col-3">
         <form @submit.prevent="login">
@@ -47,6 +47,29 @@ export default {
     let password = ref("");
     let error_message = ref("");
 
+    const jwt_token = localStorage.getItem("jwt_token");
+
+    //如果token存在本地
+    if (jwt_token) {
+      store.commit("updateToken", jwt_token); //存下，调用mutation函数用commit
+      //验证token是否合法，验证就是从云端获取用户信息
+      store.dispatch("getinfo", {
+        success() {
+          router.push({ name: "home" }); //跳到首页
+
+          //mutations里函数用commit，action里面函数用dispatch
+          store.commit("updatePullingInfo", false);
+        },
+        error() {
+          //如果没有登录成功，就false，登陆界面正常显示
+          store.commit("updatePullingInfo", false);
+        },
+      });
+    } else {
+      //如果没有登录成功，就false，登陆界面正常显示
+      store.commit("updatePullingInfo", false);
+    }
+
     const login = () => {
       error_message.value = "";
       store.dispatch("login", {
@@ -56,7 +79,6 @@ export default {
           store.dispatch("getinfo", {
             success() {
               router.push({ name: "home" });
-              console.log(store.state.user);
             },
           });
         },

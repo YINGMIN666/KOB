@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import ModuleUser from "./user";
+import ModuleUser from "./user"; //将写好的引入进来
 
 export default createStore({
   state: {},
@@ -7,6 +7,6 @@ export default createStore({
   mutations: {},
   actions: {},
   modules: {
-    user: ModuleUser,
+    user: ModuleUser, //后面使用的$store.stata.user的user就是这个user
   },
 });
