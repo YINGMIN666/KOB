@@ -75,7 +75,7 @@
               :to="{ name: 'user_account_register' }"
               role="button"
             >
-              Create your KOB Account
+              Sign up
             </router-link>
           </li>
         </ul>
