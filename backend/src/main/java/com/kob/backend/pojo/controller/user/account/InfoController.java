@@ -1,4 +1,4 @@
-package com.kob.backend.controller.user.account;
+package com.kob.backend.pojo.controller.user.account;
 
 import com.kob.backend.service.user.account.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;

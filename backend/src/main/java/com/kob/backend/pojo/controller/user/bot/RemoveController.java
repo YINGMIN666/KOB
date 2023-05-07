@@ -1,4 +1,4 @@
-package com.kob.backend.controller.user.bot;
+package com.kob.backend.pojo.controller.user.bot;
 
 import com.kob.backend.service.user.bot.RemoveService;
 import org.springframework.beans.factory.annotation.Autowired;
